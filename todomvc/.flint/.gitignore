@@ -1,0 +1,7 @@
+out
+typed
+deps
+deps/*
+node_modules
+.DS_Store
+npm-debug.*log

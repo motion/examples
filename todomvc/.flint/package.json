@@ -6,10 +6,6 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {},
-  "dependencies": {
-    "bluebird": "^2.10.2"
-  },
-  "installed": [
-    "bluebird"
-  ]
+  "dependencies": {},
+  "installed": []
 }
