@@ -24,6 +24,18 @@ view Home {
     { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
     { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
     { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
+    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
   ]
 
   load()
@@ -42,11 +54,21 @@ view Home {
     <img src={user.avatar} />
     <h2>seecoy@me.com</h2>
 
-    <projects repeat={projects}>
-      <h4>{_.name}</h4>
-      <img src={_.image} />
+    <projects>
+      <item repeat={projects}>
+        <h4>{_.name}</h4>
+      </item>
     </projects>
   </home>
+
+  $projects = {
+    position: 'absolute',
+    top: 100,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    padding: 20
+  }
 }
 
 view Project {
