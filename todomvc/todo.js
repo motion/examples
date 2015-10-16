@@ -1,12 +1,23 @@
 view Todo {
-  let newTitle, completed
+  let newTitle, completed, editing
+  let editTitle = ^todo.title
 
   on('update', () => {
     newTitle = ^todo.title
     completed = ^todo.done
   })
 
-  <li class={{ completed }}>
+  on('props', () => {
+    if (^editing) {
+      setTimeout(() => {
+        let edit = view.refs.edit
+        edit.select()
+      })
+
+    }
+  })
+
+  <li class={{ completed, editing: ^editing }}>
     <div class="view">
       <input
         class="toggle"
@@ -15,14 +26,17 @@ view Todo {
         onChange={^onToggle}
       />
       <label if={!^editing} onDoubleClick={^onEdit}>
-        {^todo.title} {^todo.done.toString()}
+        {^todo.title}
       </label>
-      <input
-        if={^editing}
-        sync={newTitle}
-        onEnter={() => ^onSave(newTitle)}
-      />
       <button class="destroy" onClick={^onDestroy} />
     </div>
+    <input
+      if={^editing}
+      class="edit"
+      ref="edit"
+      sync={newTitle}
+      onBlur={^onCancel}
+      onEnter={() => ^onSave(newTitle)}
+    />
   </li>
 }
