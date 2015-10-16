@@ -11,14 +11,13 @@ view Main {
   }
 
   let editing = null
-  let newTitle = ""
+  let newTitle = ''
   let filter = "all"
-
   let todos = []
 
-  const create = () => {
-    todos = todos.concat([{ id: uuid(), title: newTitle, done: false }])
-    newTitle = ""
+  const create = title => {
+    todos = todos.concat([ { id: uuid(), title, done: false } ])
+    newTitle = ''
   }
 
   const setItem = (obj, x, xs) =>
@@ -34,10 +33,10 @@ view Main {
   const totalIncomplete = () => todos.filter(t => !t.done).length
   const totalComplete = () => todos.filter(t => t.done).length
 
-  // Mutable fn
   const saveTodo = (title, todo) => {
     editing = null
     todos = save(title, todo, todos)
+    newTitle = ''
   }
 
   <div class="todomvc-wrapper">
@@ -48,7 +47,7 @@ view Main {
           class="new-todo"
           placeholder="What needs to be done?"
           value={newTitle}
-          onKeyDown={e => newTitle = e.target.value}
+          onChange={e => newTitle = e.target.value}
           onEnter={create}
         />
       </header>
@@ -56,7 +55,7 @@ view Main {
       <section class="main" lazyId={3} lazy={['todos', 'filter']}>
         <ul class="todo-list">
           <Todo
-           repeat={todos.filter(filterFn[filter])}
+            repeat={todos.filter(filterFn[filter])}
             onDestroy={() => todos = destroy(_, todos)}
             onToggle={() => todos = toggle(_, todos)}
             onEdit={() => editing = _}
@@ -86,7 +85,6 @@ view Main {
         </button>
       </footer>
     </div>
-
     <Footer />
   </div>
 }

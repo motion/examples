@@ -2,7 +2,7 @@ view Todo {
   let newTitle = ^todo.title
   let completed = ^todo.done
 
-  <li class={{ completed }}>
+  <todo-li class={{ completed }}>
     <div class="view">
       <input
         class="toggle"
@@ -10,11 +10,15 @@ view Todo {
         checked={completed}
         onChange={^onToggle}
       />
-      <label show={!^editing} onDoubleClick={^onEdit}>
+      <label if={!^editing} onDoubleClick={^onEdit}>
         {^todo.title}
       </label>
-      <input show={^editing} sync={newTitle} onEnter={() => ^onSave(newTitle)} />
+      <input
+        if={^editing}
+        sync={newTitle}
+        onEnter={() => ^onSave(newTitle)}
+      />
       <button class="destroy" onClick={^onDestroy} />
     </div>
-  </li>
+  </todo-li>
 }
