@@ -46,13 +46,12 @@ view Main {
         <input
           class="new-todo"
           placeholder="What needs to be done?"
-          value={newTitle}
-          onChange={e => newTitle = e.target.value}
+          sync={newTitle}
           onEnter={create}
         />
       </header>
 
-      <section class="main" lazyId={3} lazy={['todos', 'filter']}>
+      <section class="main">
         <ul class="todo-list">
           <Todo
             repeat={todos.filter(filterFn[filter])}
@@ -67,20 +66,20 @@ view Main {
         </ul>
       </section>
 
-      <footer class="footer" lazyId={2} lazy={['filter', 'todos']}>
+      <footer class="footer">
         <span class="todo-count">
-          <strong>{totalIncomplete()}</strong>
-          item{totalIncomplete() !== 1 ? "s" : ""} left
+          <strong>{totalIncomplete()} </strong>
+          item{totalIncomplete() == 1 ? '' : 's'} left
         </span>
-        <ul class="filters" repeat={["all", "done", "active"]}>
-          <li>
+        <ul class="filters">
+          <li repeat={["all", "done", "active"]}>
             <a class={{ selected: filter == _}}
                onClick={() => filter = _}>
               {capitalize(_)}
             </a>
           </li>
         </ul>
-        <button class="clear-completed" click={() => todos = todos.filter(filterFn.done)}>
+        <button class="clear-completed" click={() => todos = todos.filter(filterFn.active)}>
           Clear completed ({totalComplete()})
         </button>
       </footer>
