@@ -26,8 +26,6 @@ export const projects = [
   { name: 'In Situ', id: 'in-situ' },
   { name: 'Stadium NYC', id: 'stadium-nyc-in-post-summer-2012' },
   { name: 'Anat Ebgi' },
-  { name: 'Anat Ebgi' },
-  { name: 'Anat Ebgi' },
 ]
 
 export const projectIds = projects.map(p => p.id)
@@ -35,14 +33,13 @@ export const projectIds = projects.map(p => p.id)
 export const loadProject = async index => {
   const url = api.channel(projects[index].id)
   projects[index].data = await fetchJSON(url)
+  return new Promise(res => res())
 }
 
 view Main {
-  let projectIndex = 0
-
   <Head />
-  <Home route={route.home} onSelectProject={i => projectIndex = i} />
-  <Project route={route.project(':id')} index={projectIndex} />
+  <Home route={route.home} />
+  <Project route={route.project(':id')} />
 
   $ = {
     font: font.book

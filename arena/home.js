@@ -23,9 +23,7 @@ view Home {
       <img if={cover} src={cover} />
     </background>
     <projects>
-      <item
-        repeat={projects}
-        onClick={^onSelectProject.partial(_index)}>
+      <item repeat={projects}>
         <h4>
           <Link to={route.project(_.id)}>
             {_.name}
