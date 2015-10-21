@@ -32,6 +32,11 @@ export const projects = [
 
 export const projectIds = projects.map(p => p.id)
 
+export const loadProject = async index => {
+  const url = api.channel(projects[index].id)
+  projects[index].data = await fetchJSON(url)
+}
+
 view Main {
   let projectIndex = 0
 

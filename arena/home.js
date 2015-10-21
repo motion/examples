@@ -1,20 +1,27 @@
-
-
 view Home {
+  let index, project, cover
   let fetched = false
   let user = {}
 
   load()
 
   async function load() {
+    index = index || 0
+    project = projects[index]
+
     user = await fetchJSON(api.user('414'))
     fetched = true
+
+    if (!project.data)
+      await loadProject(index)
+
+    cover = project.data.contents[0].image.large.url
   }
 
-  <loading if={!fetched}>
-    Loading...
-  </loading>
-  <home if={fetched}>
+  <home>
+    <background>
+      <img if={cover} src={cover} />
+    </background>
     <projects>
       <item
         repeat={projects}
@@ -41,6 +48,16 @@ view Home {
       right: 0,
       bottom: 0,
       padding: 20
+    },
+
+    background: {
+      position: 'fixed',
+      top: 0, left: 0, right: 0, bottom: 0
+    },
+
+    img: {
+      margin: 'auto',
+      opacity: 0.15
     }
   }
 }
