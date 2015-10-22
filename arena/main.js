@@ -86,7 +86,7 @@ view Head {
 view Link {
   function go() { Flint.router.go(^to) }
 
-  <a-link onClick={go} yield />
+  <link-a onClick={go} yield />
 
   $ = {
     textDecoration: ^plain ? 'none' : 'underline',
