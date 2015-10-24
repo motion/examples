@@ -1,5 +1,39 @@
+@font-face {
+  font-family: 'GT Sectra';
+  src: url('/fonts/gt-display-bold/GT-Sectra-Display-Bold.eot?v=2.010');
+  src: url('/fonts/gt-display-bold/GT-Sectra-Display-Bold.eot?#iefix&v=2.010') format('embedded-opentype'),
+    url('/fonts/gt-display-bold/GT-Sectra-Display-Bold.woff2?v=2.010') format('woff2'),
+    url('/fonts/gt-display-bold/GT-Sectra-Display-Bold.woff?v=2.010') format('woff'),
+    url('/fonts/gt-display-bold/GT-Sectra-Display-Bold.ttf?v=2.010') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Sectra Book';
+  src: url('/fonts/gt-fine-book/GT-Sectra-Fine-Book.eot?v=2.010');
+  src: url('/fonts/gt-fine-book/GT-Sectra-Fine-Book.eot?#iefix&v=2.010') format('embedded-opentype'),
+    url('/fonts/gt-fine-book/GT-Sectra-Fine-Book.woff2?v=2.010') format('woff2'),
+    url('/fonts/gt-fine-book/GT-Sectra-Fine-Book.woff?v=2.010') format('woff'),
+    url('/fonts/gt-fine-book/GT-Sectra-Fine-Book.ttf?v=2.010') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Pressura';
+  src: url('/fonts/gt-pressura-light/GT-Pressura-Light.eot?v=2.010');
+  src: url('/fonts/gt-pressura-light/GT-Pressura-Light.eot?#iefix&v=2.010') format('embedded-opentype'),
+    url('/fonts/gt-pressura-light/GT-Pressura-Light.woff2?v=2.010') format('woff2'),
+    url('/fonts/gt-pressura-light/GT-Pressura-Light.woff?v=2.010') format('woff'),
+    url('/fonts/gt-pressura-light/GT-Pressura-Light.ttf?v=2.010') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 body {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'GT Sectra', Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 300;
   margin: 0;
   padding: 0;
   color: #333;

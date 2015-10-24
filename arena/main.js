@@ -1,93 +1,95 @@
 // api
 export const api = {}
-
 api.base = 'http://api.are.na/v2'
 api.channels = `${api.base}/channels`
-
 api.user = id => `${api.base}/users/${id}`
-api.user.channels = id => `${api.base}/users/${id}/channels`
 api.channel = id => `${api.base}/channels/${id}`
 api.block = id => `${api.base}/blocks/${id}`
 
+export const font = {}
+font.display = '15pt "GT Sectra", serif'
+font.book = '13pt "GT Sectra Book", serif'
+font.pressura = '15pt "GT Pressura", sans-serif'
+
+export const go = Flint.router.go
+export const link = Flint.router.link
+
+export const route = {}
+route.home = '/'
+route.project = slug => `/project/${slug}`
+
+export const projects = [
+  { name: 'BARNRAZER', id: 'barnrazer' },
+  { name: 'Hollywood High Modernism', id: 'hollywood-high-modernism' },
+  { name: 'Monsters', id: 'monsters' },
+  { name: 'marillouigi', id: 'marillouigi' },
+  { name: 'In Situ', id: 'in-situ' },
+  { name: 'Stadium NYC', id: 'stadium-nyc-in-post-summer-2012' },
+  { name: 'Anat Ebgi' },
+]
+
+export const projectIds = projects.map(p => p.id)
+
+export const loadProject = async index => {
+  const url = api.channel(projects[index].id)
+  projects[index].data = await fetchJSON(url)
+  return new Promise(res => res())
+}
+
 view Main {
-  let project
+  <Head />
+  <Home route={route.home} />
+  <Project route={route.project(':id')} />
 
-  <Project if={project} id={project} />
-  <Home if={!project} onSelectProject={p => project = p} />
-}
-
-view Home {
-  let fetched = false
-  let user = {}
-  let projects = [
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-    { name: 'Anat Ebgi', image: 'https://d2w9rnfcy7mm78.cloudfront.net/455645/large_38db3a15b50742036f1a2f0e1dbc46dd.jpg' },
-  ]
-
-  load()
-
-  async function load() {
-    user = await fetchJSON(api.user('414'))
-    // projects = await fetchJSON(api.user.channels('414'))
-    fetched = true
-  }
-
-  <loading if={!fetched}>
-    Loading...
-  </loading>
-  <home if={fetched}>
-    <h1>{user.full_name}</h1>
-    <img src={user.avatar} />
-    <h2>seecoy@me.com</h2>
-
-    <projects>
-      <item repeat={projects}>
-        <h4>{_.name}</h4>
-      </item>
-    </projects>
-  </home>
-
-  $projects = {
-    position: 'absolute',
-    top: 100,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    padding: 20
+  $ = {
+    font: font.book
   }
 }
 
-view Project {
-  let fetched = false
-  let contents = []
+view Head {
+  <h1><Link to="/" plain>Chris Coy</Link></h1>
+  <recent>
+    recent: <Link to="/projects/anat">Anat Ebgi at NADA New York</Link>
+  </recent>
+  <email>
+    email@seecoy.com
+  </email>
 
-  load()
+  $ = {
+    font: font.display,
+    color: '#333',
+    flexFlow: 'row',
+    alignItems: 'center',
+    padding: 10,
+    width: '100%',
+    fontWeight: 300,
 
-  async function load() {
-    let data = await fetchJSON(api.channel(^id))
-    contents = data.contents
-    fetched = true
+    h1: {
+      display: 'flex',
+      flexGrow: 1,
+      fontSize: 16,
+      margin: 0
+    },
+
+    recent: {
+      flexFlow: 'row',
+      flexGrow: 1
+    },
+
+    email: {
+      font: font.book,
+      color: '#ccc'
+    }
   }
+}
 
-  <loading if={!fetched}>
-    Loading...
-  </loading>
-  <contents if={fetched} repeat={contents}>
-    <h1>{_.title}</h1>
-    <img if={_.image} src={_.image.display.url} />
-  </contents>
+view Link {
+  function go() { Flint.router.go(^to) }
+
+  <link-a onClick={go} yield />
+
+  $ = {
+    textDecoration: ^plain ? 'none' : 'underline',
+    cursor: 'pointer'
+  }
 }
