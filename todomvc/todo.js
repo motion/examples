@@ -13,7 +13,6 @@ view Todo {
         let edit = view.refs.edit
         edit.select()
       })
-
     }
   })
 
