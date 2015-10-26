@@ -1,0 +1,13 @@
+{
+  "author": "",
+  "name": "flint-app-chart",
+  "repository": "https://github.com/chart",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "chart.js": "^1.0.2"
+  },
+  "installed": []
+}
