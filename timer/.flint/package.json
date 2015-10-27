@@ -1,0 +1,14 @@
+{
+  "author": "",
+  "name": "flint-app-timer",
+  "repository": "https://github.com/timer",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "installed": []
+}
