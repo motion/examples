@@ -9,11 +9,8 @@ let contentPosition = ({ x, y }) => {
   return { transform: `translate3d(0,${dy / dampen}px,0)` }
 }
 
-document.body.addEventListener('touchmove', function (e) {
-  e.preventDefault()
-})
-
 view Main {
+  let bg = "#3F51B5"
   let dragging = false
   let c = { x: 160, y: 160 } //quadratic bezier control point
   let start = { x: 0, y: 0} //drag start point
@@ -48,8 +45,6 @@ view Main {
     }
   }
 
-  let blue = "#3F51B5"
-
   <draggable onMouseDown={startDrag}
              onMouseMove={onDrag}
              onMouseLeave={stopDrag}
@@ -62,7 +57,7 @@ view Main {
       <p>with <a style={{color:'white'}} href="http://flintjs.com" target="_blank">Flint</a> + <a  style={{color:'white'}} href="http://dynamicsjs.com" target="_blank">dynamics.js</a></p>
     </header>
     <svg width={320} height={560}>
-      <path d={headerPath(c)} fill={blue}></path>
+      <path d={headerPath(c)} fill={bg}></path>
     </svg>
     <content style={contentPosition(c)}>
       Note this is just an effect demo - there are of course many additional details if you want to use this in production, e.g. handling responsive sizes, reload threshold and content scrolling. Those are out of scope for this quick little demo.
@@ -70,6 +65,8 @@ view Main {
     </content>
   </draggable>
 
+  $ = { userSelect: 'none' }
+  
   $h1 = {
     fontWeight: 300,
     fontSize: '1.8em',
@@ -77,25 +74,16 @@ view Main {
   }
 
   $draggable = {
-    background: 'white',
-    boxShadow: '0 4px 16px rgba(0,0,0,.15)',
-    width: 320,
-    height: 560,
-    overflow: 'hidden',
+    boxShadow: '0 4px 16px rgba(0,0,0,.4)',
+    width: 320, height: 560,
     margin: '30px auto',
     position: 'relative',
-    fontFamily: "'Roboto', Helvetica, Arial, sans-serif",
     color: '#fff',
-    fontSize: 14,
-    fontWeight: 300,
-    userSelect: 'none',
   }
 
   $svg = {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 0,
+    top: 0, left: 0, zIndex: 0,
   }
 
   $header = {
@@ -103,7 +91,7 @@ view Main {
     zIndex: 1,
     padding: 30,
     height: 160,
-    background: blue,
+    background: bg,
     boxSizing: 'border-box',
   }
 
