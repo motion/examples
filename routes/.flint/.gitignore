@@ -1,0 +1,9 @@
+out
+typed
+deps
+deps/*
+build
+node_modules
+.DS_Store
+npm-debug.*log
+flint.json
