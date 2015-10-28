@@ -1,0 +1,15 @@
+{
+  "author": "",
+  "name": "flint-app-drag",
+  "repository": "https://github.com/drag",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "dynamics.js": "0.0.8"
+  },
+  "installed": [
+    "dynamics.js"
+  ]
+}
