@@ -10,7 +10,7 @@ let timeLabel = elapsed => {
 let col = { display: 'flex', flexFlow: 'column', }
 let row = { display: 'flex', flexFlow: 'row', }
 let center = { alignItems: 'center', justifyContent: 'center' }
-  
+
 view Main {
   let active = false
   let elapsed = 0
@@ -19,36 +19,36 @@ view Main {
   // add up all the time before was paused
   let pausedTime = 0
   let saves = []
-  
-  let reset = () => { 
-    elapsed = 0 
+
+  let reset = () => {
+    elapsed = 0
     pausedTime = 0
     active = false
     clear()
   }
-  
+
   let clear = () => {
     active = false
     if (intervalID) clearInterval(intervalID)
   }
-  
+
   let stop = () => {
     elapsed = 0
     pausedTime = 0
     clear()
   }
-  
+
   let save = () => {
     saves.push(elapsed)
     pausedTime = 0
     startTime = +Date.now()
   }
-  
+
   let pause = () => {
     pausedTime = elapsed
     clear()
   }
-  
+
   let start = () => {
     startTime = +Date.now() - pausedTime
     pausedTime = 0
@@ -57,27 +57,27 @@ view Main {
       elapsed = +Date.now() - startTime
     }, 30)
   }
-  
+
   on('unmount', clear)
-  
+
   <panel>
-    <Display onStart={start} 
-             onPause={pause} 
-             onSave={save} 
+    <Display onStart={start}
+             onPause={pause}
+             onSave={save}
              active={active}
              elapsed={elapsed}
              onStop={stop} />
-      
+
     <Saved if={saves.length > 0} items={saves} />
   </panel>
-  
+
   $ = Object.assign.apply(null,[col, center, {
     width: '100%', height: '100%',
     background: '#3a26d7',
     fontFamily: '"Helvetica", Arial, sans-serif',
     margin: 0,
   }])
-  
+
   $panel = [col, center, {
     background: 'white',
     width: 400,
@@ -86,12 +86,12 @@ view Main {
   }]
 }
 
-//class={{last: _index == ^items.length - 1 }}>
+//class={{last: _index == view.props.items.length - 1 }}>
 view Saved {
-  <save repeat={^items}>
+  <save repeat={view.props.items}>
     <strong>✔︎</strong><Time elapsed={_} />
   </save>
-  
+
   $ = {
     display: 'block',
     width: '100%',
@@ -100,7 +100,7 @@ view Saved {
     maxHeight: 250,
     padding: 0,
   }
-  
+
   $save = {
     padding: [16, 0],
     display: 'block',
@@ -109,7 +109,7 @@ view Saved {
     userSelect: 'none',
     borderBottom: '1px solid #dedede',
   }
-  
+
   $strong = {
     display: 'inline-block',
     marginRight: 8,
@@ -118,7 +118,7 @@ view Saved {
 }
 
 view Time {
-  <time>{timeLabel(^elapsed)}</time>
-  
+  <time>{timeLabel(view.props.elapsed)}</time>
+
   $time = { ':hover': { color: 'orange' }}
 }

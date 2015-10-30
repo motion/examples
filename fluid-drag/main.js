@@ -10,7 +10,7 @@ let contentPosition = ({ x, y }) => {
 }
 
 view Main {
-  let bg = "#3F51B5"
+  let bg = '#3F51B5'
   let dragging = false
   let c = { x: 160, y: 160 } //quadratic bezier control point
   let start = { x: 0, y: 0} //drag start point
@@ -40,18 +40,19 @@ view Main {
         type: dynamics.spring,
         duration: 700,
         friction: 280,
-        change: __.update,
+        change: view.update,
       })
     }
   }
 
-  <draggable onMouseDown={startDrag}
-             onMouseMove={onDrag}
-             onMouseLeave={stopDrag}
-             onMouseUp={stopDrag}
-             onTouchStart={startDrag}
-             onTouchMove={onDrag}
-             onTouchEnd={stopDrag}>
+  <draggable
+    onMouseDown={startDrag}
+    onMouseMove={onDrag}
+    onMouseLeave={stopDrag}
+    onMouseUp={stopDrag}
+    onTouchStart={startDrag}
+    onTouchMove={onDrag}
+    onTouchEnd={stopDrag}>
     <header>
       <h1>Draggable Header</h1>
       <p>with <a style={{color:'white'}} href="http://flintjs.com" target="_blank">Flint</a> + <a  style={{color:'white'}} href="http://dynamicsjs.com" target="_blank">dynamics.js</a></p>
@@ -65,8 +66,10 @@ view Main {
     </content>
   </draggable>
 
-  $ = { userSelect: 'none' }
-  
+  $ = {
+    userSelect: 'none'
+  }
+
   $h1 = {
     fontWeight: 300,
     fontSize: '1.8em',
@@ -95,5 +98,9 @@ view Main {
     boxSizing: 'border-box',
   }
 
-  $content = { color: '#333', lineHeight: '1.5em', padding: 20 }
+  $content = {
+    color: '#333',
+    lineHeight: '1.5em',
+    padding: 20
+  }
 }

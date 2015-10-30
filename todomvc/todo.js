@@ -1,14 +1,14 @@
 view Todo {
   let newTitle, completed, editing
-  let editTitle = ^todo.title
+  let editTitle = view.props.todo.title
 
   on('update', () => {
-    newTitle = ^todo.title
-    completed = ^todo.done
+    newTitle = view.props.todo.title
+    completed = view.props.todo.done
   })
 
   on('props', () => {
-    if (^editing) {
+    if (view.props.editing) {
       setTimeout(() => {
         let edit = view.refs.edit
         edit.select()
@@ -16,26 +16,26 @@ view Todo {
     }
   })
 
-  <li class={{ completed, editing: ^editing }}>
+  <li class={{ completed, editing: view.props.editing }}>
     <div class="view">
       <input
         class="toggle"
         type="checkbox"
         checked={completed}
-        onChange={^onToggle}
+        onChange={view.props.onToggle}
       />
-      <label if={!^editing} onDoubleClick={^onEdit}>
-        {^todo.title}
+      <label if={!view.props.editing} onDoubleClick={view.props.onEdit}>
+        {view.props.todo.title}
       </label>
-      <button class="destroy" onClick={^onDestroy} />
+      <button class="destroy" onClick={view.props.onDestroy} />
     </div>
     <input
-      if={^editing}
+      if={view.props.editing}
       class="edit"
       ref="edit"
       sync={newTitle}
-      onBlur={^onCancel}
-      onEnter={() => ^onSave(newTitle)}
+      onBlur={view.props.onCancel}
+      onEnter={() => view.props.onSave(newTitle)}
     />
   </li>
 }

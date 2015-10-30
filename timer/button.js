@@ -1,13 +1,13 @@
 view Button {
-  <button yield>{^children}</button>
+  <button yield>{view.props.children}</button>
   
   $ = {
     border: 0,
     cursor: 'pointer',
-    opacity: ^disabled ? .3 : 1,
+    opacity: view.props.disabled ? .3 : 1,
     marginLeft: 16,
     ':hover': {
-      borderColor: ^disabled ? 'none' : '#737373'
+      borderColor: view.props.disabled ? 'none' : '#737373'
     },
     width: 50,
     height: 50,

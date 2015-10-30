@@ -84,12 +84,12 @@ view Head {
 }
 
 view Link {
-  function go() { Flint.router.go(^to) }
+  function go() { Flint.router.go(view.props.to) }
 
   <link-a onClick={go} yield />
 
   $ = {
-    textDecoration: ^plain ? 'none' : 'underline',
+    textDecoration: view.props.plain ? 'none' : 'underline',
     cursor: 'pointer'
   }
 }
