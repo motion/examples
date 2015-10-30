@@ -6,7 +6,7 @@ view Project {
   load()
 
   async function load() {
-    id = ^params.id
+    id = view.props.params.id
     index = projectIds.indexOf(id)
     project = projects[index]
 
@@ -41,9 +41,9 @@ view Project {
 
 view Project.Title {
   <main>
-    <Arrow left onClick={^left} />
-    <h1>{^children}</h1>
-    <Arrow right onClick={^right} />
+    <Arrow left onClick={view.props.left} />
+    <h1>{view.props.children}</h1>
+    <Arrow right onClick={view.props.right} />
   </main>
   <close><Link to="/" plain>X</Link></close>
 
@@ -73,8 +73,8 @@ view Project.Title {
 }
 
 view Arrow {
-  <arrow if={^right} yield>&gt;</arrow>
-  <arrow if={^left} yield>&lt;</arrow>
+  <arrow if={view.props.right} yield>&gt;</arrow>
+  <arrow if={view.props.left} yield>&lt;</arrow>
 
   $ = {
     cursor: 'pointer',

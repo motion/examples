@@ -67,12 +67,12 @@ view Main {
 
 view Saved {
   <saved>
-    <save repeat={^items}>
+    <save repeat={view.props.items}>
       <strong>✔︎</strong><Time elapsed={_} />
     </save>
   </saved>
 }
 
 view Time {
-  <time>{timeLabel(^elapsed)}</time>
+  <time>{timeLabel(view.props.elapsed)}</time>
 }

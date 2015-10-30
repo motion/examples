@@ -2,13 +2,13 @@ view Display {
   let nothing = () => {}
   
   <display>
-    <h1><Time elapsed={^elapsed} /></h1>
-    <button disabled={!^active} onClick={^onStop}>◼︎</button>
+    <h1><Time elapsed={view.props.elapsed} /></h1>
+    <button disabled={!view.props.active} onClick={view.props.onStop}>◼︎</button>
     <button 
-      class={{play:true, active: ^active}} 
-      onClick={^active ? ^onPause : ^onStart}>{^active ? 'II' : '►'}
+      class={{play:true, active: view.props.active}} 
+      onClick={view.props.active ? view.props.onPause : view.props.onStart}>{view.props.active ? 'II' : '►'}
     </button>
-    <button disabled={!^active} onClick={^onSave}>✔︎</button>
+    <button disabled={!view.props.active} onClick={view.props.onSave}>✔︎</button>
   </display>
 }
 
