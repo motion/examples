@@ -9,5 +9,7 @@
   "dependencies": {
     "chart.js": "^1.0.2"
   },
-  "installed": []
+  "installed": [
+    "chart.js"
+  ]
 }
