@@ -1,3 +1,5 @@
+import { api, route, loadProject } from './helpers'
+
 view Home {
   let index, project, cover
   let fetched = false
@@ -9,13 +11,11 @@ view Home {
     index = index || 0
     project = projects[index]
 
-    user = await fetchJSON(api.user('414'))
+    user = await fetch.json(api.user('414'))
     fetched = true
 
-    if (!project.data)
-      await loadProject(index)
-
-    cover = project.data.contents[0].image.large.url
+    return loadProject(index) // await?
+    // cover = project.data.contents[0].image.large.url
   }
 
   <home>
@@ -38,25 +38,25 @@ view Home {
     width: 960,
     margin: [0, 'auto'],
     padding: 80,
+  }
 
-    projects: {
-      position: 'absolute',
-      top: 40,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      padding: 20
-    },
+  $projects = {
+    position: 'absolute',
+    top: 40,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    padding: 20
+  }
 
-    background: {
-      position: 'fixed',
-      top: 0, left: 0, right: 0, bottom: 0
-    },
+  $background = {
+    position: 'fixed',
+    top: 0, left: 0, right: 0, bottom: 0
+  }
 
-    img: {
-      margin: 'auto',
-      opacity: 0.15
-    }
+  $img = {
+    margin: 'auto',
+    opacity: 0.15
   }
 }
 
@@ -95,18 +95,18 @@ view Home.Foot {
     font: font.pressura,
     color: '#bbb',
     fontSize: '13pt',
-
-    section: {
-      flexFlow: 'row',
-      alignItems: 'center',
-      flexGrow: 1
-    },
-
-    '.end': {
-      textAlign: 'right'
-    },
-
-    title: [item],
-    Link: [item]
   }
+
+  $section = {
+    flexFlow: 'row',
+    alignItems: 'center',
+    flexGrow: 1
+  },
+
+  $end = {
+    textAlign: 'right'
+  },
+
+  $title = [item]
+  $Link = [item]
 }
