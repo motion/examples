@@ -1,15 +1,18 @@
 view Main {
   let open = false
   
-  <button onClick={() => open = true}>open modal</button>
+  <button onClick={() => open = true}>open!</button>
   <Modal if={open} onClose={() => open = false}>
     <h2>hello</h2>
   </Modal>
 
   $ = {
     color: 'sienna',
-    padding: 20
+    padding: 20,
+    fontSize: 29,
   }
+  
+  $h2 = { fontSize: 41 }
 }
 
 view Modal {
@@ -29,7 +32,7 @@ view Modal {
 
   $close = { 
     position: 'absolute', 
-    fontSize: 45,
+    fontSize: 50,
     cursor: 'pointer',
     right: 26, 
     top: 0, 

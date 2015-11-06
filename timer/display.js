@@ -11,7 +11,7 @@ view Display {
       onClick={view.props.active ? view.props.onPause : view.props.onStart}>
       <middleText>{view.props.active ? 'II' : '►'}</middleText>
     </Button>
-    <Button class="minor"  disabled={!view.props.active} onClick={view.props.onSave}>
+    <Button class="minor" disabled={!view.props.active} onClick={view.props.onSave}>
       <text>✔︎</text>
     </Button>
   </display>
@@ -23,7 +23,7 @@ view Display {
   	border: '6px solid #ff560e !important',
   }
 
-  $.play = [{
+  $play = [{
     fontSize: 24,
     width: 80,
     height: 80,
@@ -49,7 +49,7 @@ view Display {
 
   $text = textS
 
-  $.minor = { top: view.props.active ? -5 : 0 }
+  $minor = { top: view.props.active ? -5 : 0 }
 
   let translatePlay = { transform: 'translate(-42%, -50%)' }
   $middleText = [textS, view.props.active?{}:translatePlay]

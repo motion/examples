@@ -58,27 +58,28 @@ view Main {
     }, 30)
   }
 
-  on('unmount', clear)
+  <wrapper>
+    <panel>
+      <Display onStart={start}
+               onPause={pause}
+               onSave={save}
+               active={active}
+               elapsed={elapsed}
+               onStop={stop} />
 
-  <panel>
-    <Display onStart={start}
-             onPause={pause}
-             onSave={save}
-             active={active}
-             elapsed={elapsed}
-             onStop={stop} />
+      <Saved if={saves.length > 0} items={saves} />
+    </panel>
+  </wrapper>
 
-    <Saved if={saves.length > 0} items={saves} />
-  </panel>
-
-  $ = Object.assign.apply(null,[col, center, {
-    width: '100%', height: '100%',
+  $ = Object.assign.apply(null,[{
+    position: 'absolute', left:0, top: 0, right: 0, bottom: 0,
     background: '#3a26d7',
     fontFamily: '"Helvetica", Arial, sans-serif',
-    margin: 0,
   }])
-
+  
+  $wrapper = [center, col, { height: '100%' }]
   $panel = [col, center, {
+    margin: ['auto'],
     background: 'white',
     width: 400,
     boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)',
@@ -96,13 +97,14 @@ view Saved {
     display: 'block',
     width: '100%',
     textAlign: 'left',
-    margin: [32, 0, 0],
-    maxHeight: 250,
-    padding: 0,
+    margin: [28, 0, 0],
+    overflow: 'scroll',
+    maxHeight: 270,
+    padding: 1,
   }
 
   $save = {
-    padding: [16, 0],
+    padding: [18, 0],
     display: 'block',
     fontWeight: 300,
     color: '#737373',
