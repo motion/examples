@@ -1,5 +1,8 @@
+import { api, go, projectIds, projects } from './helpers'
+
 view Project {
-  let id, project, index
+  let index = 0
+  let id, project
   let fetched = false
   let contents = []
 
@@ -10,15 +13,16 @@ view Project {
     index = projectIds.indexOf(id)
     project = projects[index]
 
-    let data = await fetchJSON(api.channel(id))
+    let data = await fetch.json(api.channel(id))
     contents = data.contents
     fetched = true
   }
 
   function plink(index) {
-    return async () => {
-      await go(`/project/${projects[index].id}`)
-      load()
+    return () => {
+      if (index < 0) return
+      go(`/project/${projects[index].id}`)
+        .then(load)
     }
   }
 
@@ -52,23 +56,23 @@ view Project.Title {
     padding: [0, '7%', 0, '10%'],
     flexFlow: 'row',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
+  }
 
-    h1: {
-      fontSize: 22,
-      margin: 0
-    },
+  $h1 = {
+    fontSize: 22,
+    margin: 0
+  }
 
-    main: {
-      flexFlow: 'row',
-      flexGrow: 1,
-      justifyContent: 'space-between',
-    },
+  $main = {
+    flexFlow: 'row',
+    flexGrow: 1,
+    justifyContent: 'space-between',
+  }
 
-    close: {
-      padding: [0, 0, 0, 30],
-      opacity: 0.5
-    }
+  $close = {
+    padding: [0, 0, 0, 30],
+    opacity: 0.5
   }
 }
 
