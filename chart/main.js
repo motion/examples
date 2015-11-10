@@ -14,25 +14,23 @@ view Main {
           },
       ]
   };
-  
+
   <h1>Awesomeness</h1>
   <Bar data={data} width={300} height={400} />
 }
 
 view Bar {
-  let renderChart = () => {
+  function renderChart() {
     let context = view.refs.chart.getContext('2d')
     new Chart(context).Bar(view.props.data)
   }
-  
-  // render after one frame so element exists
-  // then if any props change keep updating
-  setTimeout(() => {
-    renderChart()
-    on('update', renderChart)
-  })
-  
-  <canvas ref="chart" 
-          width={view.props.width || 400} 
-          height={view.props.height || 400}></canvas>
+
+  on('mount', renderChart)
+  on('props', renderChart)
+
+  <canvas
+    ref="chart"
+    width={view.props.width || 400}
+    height={view.props.height || 400}>
+  </canvas>
 }
