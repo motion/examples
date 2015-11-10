@@ -29,18 +29,19 @@ view Modal {
     background: 'rgba(0,0,0,.6)',
     left: 0, right: 0, top: 0, bottom: 0,
   }
-
+  
   $close = { 
     position: 'absolute', 
     fontSize: 50,
     cursor: 'pointer',
     right: 26, 
     top: 0, 
-    ":hover": { color: 'black' },
+    hover: { color: 'black' },
   }
   
   $pane = {
     position: 'relative',
+    display: 'block',
     margin: '300px auto',
     background: 'white',
     width: 400,
