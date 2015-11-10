@@ -1,4 +1,4 @@
-import { api, route, loadProject } from './helpers'
+import { api, route, loadProject, projects, font } from './helpers'
 
 view Home {
   let index, project, cover

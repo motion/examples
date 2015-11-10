@@ -1,4 +1,4 @@
-import { api, route, link } from './helpers'
+import { api, route, link, font } from './helpers'
 
 view Main {
   <Head />
