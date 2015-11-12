@@ -90,6 +90,7 @@ view Main {
 
 view Footer {
   <footer class="info">
+    <br/>
     <p>Double-click to edit a todo</p>
     <p>Written by Nick Cammarata & Nate Wienert</p>
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
