@@ -1,0 +1,13 @@
+{
+  "author": "",
+  "name": "flint-app-victor",
+  "repository": "https://github.com/victor",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "lodash.range": "^3.0.1"
+  },
+  "installed": []
+}

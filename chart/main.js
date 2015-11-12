@@ -20,16 +20,18 @@ view Main {
 }
 
 view Bar {
-  function renderChart() {
-    let context = view.refs.chart.getContext('2d')
+  let chart = null
+  let render = () => {
+    if (!chart) return
+    let context = chart.getContext('2d')
     new Chart(context).Bar(view.props.data)
   }
 
-  on('mount', renderChart)
-  on('props', renderChart)
+  on.change(render)
 
+  // in the new react, ref takes a function that returns the el
   <canvas
-    ref="chart"
+    ref={el => chart = el}
     width={view.props.width || 400}
     height={view.props.height || 400}>
   </canvas>
