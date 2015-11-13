@@ -1,0 +1,7 @@
+{
+  "port": 4002,
+  "wport": 6285,
+  "installed": [
+    "dynamics.js"
+  ]
+}
