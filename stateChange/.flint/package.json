@@ -1,13 +1,11 @@
 {
   "author": "",
-  "name": "flint-app-drag",
-  "repository": "https://github.com/drag",
+  "name": "flint-app-stateChange",
+  "repository": "https://github.com/stateChange",
   "description": "",
   "version": "1.0.0",
   "main": "",
   "scripts": {},
   "dependencies": {},
-  "installed": [
-    "dynamics.js"
-  ]
+  "installed": []
 }

@@ -1,18 +1,19 @@
 view Todo {
+  let input = null
   let newTitle, completed, editing
   let editTitle = view.props.todo.title
 
-  on('update', () => {
+  on.mount(() => {
     newTitle = view.props.todo.title
+  })
+  
+  on.change(() => {
     completed = view.props.todo.done
   })
 
-  on('props', () => {
+  on.props(() => {
     if (view.props.editing) {
-      setTimeout(() => {
-        let edit = view.refs.edit
-        edit.select()
-      })
+      setTimeout(() => input.select())
     }
   })
 
@@ -32,7 +33,7 @@ view Todo {
     <input
       if={view.props.editing}
       class="edit"
-      ref="edit"
+      ref={el => input = el}
       sync={newTitle}
       onBlur={view.props.onCancel}
       onEnter={() => view.props.onSave(newTitle)}
