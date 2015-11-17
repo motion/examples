@@ -1,6 +1,6 @@
 {
-  "port": 4001,
-  "wport": 6284,
+  "port": 4002,
+  "wport": 6285,
   "installed": [
     "chart.js"
   ]
