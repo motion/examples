@@ -6,7 +6,9 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "dynamics.js": "0.0.8"
+  },
   "installed": [
     "dynamics.js"
   ]

@@ -1,0 +1,13 @@
+{
+  "author": "",
+  "name": "flint-app-redux",
+  "repository": "https://github.com/redux",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "redux": "^3.0.4"
+  },
+  "installed": []
+}
