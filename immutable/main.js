@@ -17,15 +17,26 @@ view Main {
 
   console.log(view.state)
 
+  <h1>Parent data: {data}</h1>
   <Child data={data} />
 }
 
 view Child {
+  let childData
+
+  on.props(() => {
+    childData = view.props.data
+  })
+
+  on.delay(3000, () => {
+    childData = childData.set('a', 100)
+  })
+
   on.change(() => {
     console.log('changed')
   })
 
-  <h2>{view.props.data.get('a')}</h2>
+  <h2>{childData.get('a')}</h2>
 }
 
 
@@ -37,6 +48,8 @@ function imm(view) {
 }
 
 function immUpdate(cur, next) {
+  console.log('caling ummupdate')
+
   if (cur.data) {
     const same = is(cur.data, next.data)
     return !same
