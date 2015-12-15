@@ -1,0 +1,15 @@
+{
+  "author": "",
+  "name": "flint-app-stocks",
+  "repository": "https://github.com/stocks",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "d3": "^3.5.11",
+    "react": "^0.14.3",
+    "react-stockcharts": "^0.2.12"
+  },
+  "installed": []
+}
