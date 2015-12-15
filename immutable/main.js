@@ -48,7 +48,7 @@ function imm(view) {
 }
 
 function immUpdate(cur, next) {
-  console.log('caling ummupdate')
+  console.log('caling ummupdate', cur, next)
 
   if (cur.data) {
     const same = is(cur.data, next.data)
