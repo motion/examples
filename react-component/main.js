@@ -11,7 +11,7 @@ let options = [
   { value: 'three', label: 'Two' },
 ];
 
-logChange = val => console.log(`Selected: ${val}`)
+let logChange = val => console.log(`Selected: ${val}`)
 
 view Main {
   <holder>
@@ -21,9 +21,9 @@ view Main {
     <br />
     <Select value="three" options={options} onChange={logChange} />
   </holder>
-  
-  $ = { padding: 126 }
-  
+
+  $ = { padding: 127 }
+
   // Select defaults to full width
   $holder = { width: 200, }
 }

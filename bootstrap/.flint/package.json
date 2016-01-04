@@ -1,0 +1,13 @@
+{
+  "author": "",
+  "name": "flint-app-bootstrap",
+  "repository": "https://github.com/bootstrap",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "react-bootstrap": "^0.28.1"
+  },
+  "installed": []
+}
