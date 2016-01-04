@@ -7,25 +7,24 @@ import Button from 'react-bootstrap/lib/Button';
   Flint does not currently allow importing nested variables
   such as <Modal.Header> so here we deeply destructure
 */
-import { Header, Dialog, Title, Body, Footer } from 'react-bootstrap/lib/Modal';
+import Modal, { Header, Title, Body, Footer } from 'react-bootstrap/lib/Modal';
 
 view Main {
-  let hi = false
+  let active = false
+  let close = () => active = false
 
-  <Button onClick={() => hi = true}>Say hi!</Button>
-  <Dialog if={hi}>
-    <Header>
-      <Title>hello</Title>
+  <Button onClick={() => active = true}>Say hi!</Button>
+  <Modal show={active} onHide={close}>
+    <Header closeButton>
+      <Title>Welcome to Flint</Title>
     </Header>
 
-    <Body>
-      <msg>Welcome</msg>
-    </Body>
+    <Body>and bootstrap!</Body>
 
     <Footer>
-      <Button onClick={() => hi = false}>Close</Button>
+      <Button onClick={close}>Close</Button>
     </Footer>
-  </Dialog>
+  </Modal>
 
   $ = {
     padding: 40,
