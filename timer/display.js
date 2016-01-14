@@ -1,19 +1,31 @@
+let noop = (() => {})
+
 view Display {
-  let nothing = () => {}
+  prop elapsed
+  prop active
+  prop onStop = noop
+  prop onStart = noop
+  prop onPause = noop
+  prop onSave = noop
 
   <display>
-    <title><Time elapsed={view.props.elapsed} /></title>
-    <Button class="minor" disabled={!view.props.active} onClick={view.props.onStop}>
-      <text>◼︎</text>
-    </Button>
-    <Button
-      class={{play:true, active: view.props.active}}
-      onClick={view.props.active ? view.props.onPause : view.props.onStart}>
-      <middleText>{view.props.active ? 'II' : '►'}</middleText>
-    </Button>
-    <Button class="minor" disabled={!view.props.active} onClick={view.props.onSave}>
-      <text>✔︎</text>
-    </Button>
+    <title><Time elapsed={elapsed} /></title>
+    <buttons>
+      <Button class="minor"
+              disabled={!active}
+              onClick={active ? onStop : noop}>
+        <text>◼︎</text>
+      </Button>
+      <Button class={{play:true, active }}
+              onClick={active ? onPause : onStart}>
+        <middleText>{active ? 'II' : '►'}</middleText>
+      </Button>
+      <Button class="minor"
+              disabled={!active}
+              onClick={active ? onSave : noop}>
+        <text>✔︎</text>
+      </Button>
+    </buttons>
   </display>
 
 
@@ -27,7 +39,7 @@ view Display {
     fontSize: 24,
     width: 80,
     height: 80,
-  }, view.props.active ? activePlay : {}]
+  }, active ? activePlay : {}]
 
   $title = {
     userSelect: 'none',
@@ -36,6 +48,10 @@ view Display {
     marginBottom: 40,
     marginTop: 0,
     fontWeight: 300,
+  }
+
+  $buttons = {
+    flexFlow: 'row',
   }
 
   let textS = {
@@ -49,9 +65,11 @@ view Display {
 
   $text = textS
 
-  $minor = { top: view.props.active ? -5 : 0 }
+  $minor = {
+    top: active ? 30 : 17,
+    opacity: active ? 1 : .2,
+  }
 
   let translatePlay = { transform: 'translate(-42%, -50%)' }
-  $middleText = [textS, view.props.active?{}:translatePlay]
+  $middleText = [textS, active?{}:translatePlay]
 }
-
