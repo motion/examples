@@ -71,12 +71,12 @@ view Main {
     </panel>
   </wrapper>
 
-  $ = Object.assign.apply(null,[{
+  $ = [{
     position: 'absolute', left:0, top: 0, right: 0, bottom: 0,
     background: '#3a26d7',
     fontFamily: '"Helvetica", Arial, sans-serif',
-  }])
-  
+  }]
+
   $wrapper = [center, col, { height: '100%' }]
   $panel = [col, center, {
     margin: ['auto'],

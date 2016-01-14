@@ -55,7 +55,7 @@ view Main {
     onTouchEnd={stopDrag}>
     <header>
       <h1>Draggable Header</h1>
-      <p>with <a style={{color:'white'}} href="http://flintjs.com" target="_blank">Flint</a> + <a  style={{color:'white'}} href="http://dynamicsjs.com" target="_blank">dynamics.js</a></p>
+      <p>with <a style={{color:'#ffffff'}} href="http://flintjs.com" target="_blank">Flint</a> + <a  style={{color:'white'}} href="http://dynamicsjs.com" target="_blank">dynamics.js</a></p>
     </header>
     <svg width={320} height={560}>
       <path d={headerPath(c)} fill={bg}></path>

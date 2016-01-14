@@ -1,8 +1,7 @@
 view Button {
   <button yield>{view.props.children}</button>
-  
+
   $ = {
-    border: 0,
     cursor: 'pointer',
     opacity: view.props.disabled ? .3 : 1,
     marginLeft: 16,
@@ -14,12 +13,12 @@ view Button {
     color: 'black',
     background: 'transparent',
     borderRadius: '50%',
-    border: '1px solid #dedede',
-    padding: 16,
+    border: '1px solid #333',
+    padding: 13,
     position: 'relative',
     transition: 'all 300ms ease-in',
     userSelect: 'none',
     outline: 'none',
   }
-  
+
 }
