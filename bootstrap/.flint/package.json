@@ -1,14 +1,13 @@
 {
   "author": "",
-  "name": "flint-app-three",
-  "repository": "https://github.com/three",
+  "name": "flint-app-bootstrap",
+  "repository": "https://github.com/bootstrap",
   "description": "",
   "version": "1.0.0",
   "main": "",
   "scripts": {},
   "dependencies": {
-    "babel-runtime": "^6.1.18",
-    "three.js": "^0.73.0"
+    "react-bootstrap": "^0.28.1"
   },
   "installed": []
 }

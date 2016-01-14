@@ -1,17 +1,3 @@
-/* ================================================ */
-* {
-  box-sizing: border-box;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0px #ffffff, 0 0 0 0 #1aed6f;
-  }
-  100% {
-    box-shadow: 0 0 0 12px #ffffff, 0 0 0 14px rgba(26, 237, 111, 0);
-  }
-}
-
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 0;

@@ -101,11 +101,11 @@ view Home.Foot {
     flexFlow: 'row',
     alignItems: 'center',
     flexGrow: 1
-  },
+  }
 
   $end = {
     textAlign: 'right'
-  },
+  }
 
   $title = [item]
   $Link = [item]

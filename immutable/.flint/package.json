@@ -1,0 +1,13 @@
+{
+  "author": "",
+  "name": "flint-app-immutable",
+  "repository": "https://github.com/immutable",
+  "description": "",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "immutable": "^3.7.5"
+  },
+  "installed": []
+}
